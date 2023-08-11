@@ -5,30 +5,30 @@
 @using PierresTreats.Models;
 
 <h1>Welcome to Pierre's Treats</h1>
-<hr>
+@* <hr>
 
 <h4>Treats</h4>
 @if (Model["treats"].Length == 0)
 {
-    <p>No treats have been added yet!</p>
+<p>No treats have been added yet!</p>
 }
 <ul>
-    @foreach (Treat treat in Model["treats"])
-    {
-        <li>@Html.ActionLink(@treat.Name, "Details", "Treats", new { id = @treat.TreatId})</li>
-    }
+@foreach (Treat treat in Model["treats"])
+{
+<li>@Html.ActionLink(@treat.Name, "Details", "Treats", new { id = @treat.TreatId})</li>
+}
 </ul>
 
 <h4>Flavors</h4>
 @if (Model["flavors"].Length == 0)
 {
-    <p>No flavors have been added yet!</p>
+<p>No flavors have been added yet!</p>
 }
 <ul>
-    @foreach (Flavor flavor in Model["flavors"])
-    {
-        <li>@Html.ActionLink(@flavor.Description, "Details", "Flavor", new { id = @flavor.FlavorId})</li>
-    }
-</ul>
+@foreach (Flavor flavor in Model["flavors"])
+{
+<li>@Html.ActionLink(@flavor.Description, "Details", "Flavor", new { id = @flavor.FlavorId})</li>
+}
+</ul> *@
 
-<p>@Html.ActionLink("log in", "LogIn", "Account") Here</p>
+<p>@Html.ActionLink("Create or manage an account", "Index", "Account")</p>
