@@ -21,9 +21,9 @@ namespace PierresTreats.Controllers
         public ActionResult Index()
         {
             List<Treat> treats = _db.Treats.ToList();
-            // List<Machine> machines = _db.Machines.ToList();
+            List<Flavor> flavors = _db.Flavors.ToList();
             ViewBag.Treats = treats;
-            // ViewBag.Machines = machines;
+            ViewBag.Flavors = flavors;
             return View();
         }
     }

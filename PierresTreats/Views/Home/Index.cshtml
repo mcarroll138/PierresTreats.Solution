@@ -11,7 +11,7 @@
 @if (ViewBag.Treats.Count == 0)
 {
     <p>No treats have been added yet!</p>
-    <p>@Html.ActionLink("Add a new treat", "Create", "Treats")</p>
+
 }
 <ul>
     @foreach (Treat treat in ViewBag.Treats)
@@ -20,16 +20,18 @@
     }
 </ul>
 
-@* <h4>Flavors</h4>
-@if (Model["flavors"].Length == 0)
+<h4>Flavors</h4>
+@if (ViewBag.Flavors.Count == 0)
 {
-<p>No flavors have been added yet!</p>
+    <p>No flavors have been added yet!</p>
 }
 <ul>
-@foreach (Flavor flavor in Model["flavors"])
-{
-<li>@Html.ActionLink(@flavor.Description, "Details", "Flavor", new { id = @flavor.FlavorId})</li>
-}
-</ul> *@
+    @foreach (Flavor flavor in ViewBag.Flavors)
+    {
+        <li>@Html.ActionLink(@flavor.Description, "Details", "Flavors", new { id = @flavor.FlavorId})</li>
+    }
+</ul>
 
 <p>@Html.ActionLink("Create or manage an account", "Index", "Account")</p>
+<p>@Html.ActionLink("Add a new treat", "Create", "Treats")</p>
+<p>@Html.ActionLink("Add a new flavor", "Create", "Flavors")</p>
