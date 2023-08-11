@@ -7,19 +7,14 @@ using System.Linq;
 
 namespace PierresTreats.Controllers
 {
-    // public class HomeController : Controller
-    // {
-    //     private readonly PierresTreatsContext _db;
-    //     public HomeController(PierresTreatsContext db)
-    //     {
-    //         _db = db;
-    //     }
-     [HttpGet("/")]
+    public class HomeController : Controller
     {
-        // List<Engineer> engineers = _db.Engineers.ToList();
-        // List<Machine> machines = _db.Machines.ToList();
-        // ViewBag.Engineers = engineers;
-        // ViewBag.Machines = machines;
-        return View();
-}
+
+
+
+        public ActionResult Index()
+        {
+            return View();
+        }
+    }
 }

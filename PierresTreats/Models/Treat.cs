@@ -4,11 +4,12 @@ using System.Linq;
 
 namespace PierresTreats.Models
 {
-    public class Treats
+    public class Treat
     {
-    public int TreatId { get; set; }
-    public string Name {get; set;}
+        public int TreatId { get; set; }
+        public string Name { get; set; }
 
-    public List<FlavorTreat> JoinEntities { get; }
+        public List<FlavorTreat> JoinEntities { get; }
+        public ApplicationUser User { get; set; }
     }
 }
