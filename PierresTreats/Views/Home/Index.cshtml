@@ -5,21 +5,22 @@
 @using PierresTreats.Models;
 
 <h1>Welcome to Pierre's Treats</h1>
-@* <hr>
+<hr>
 
 <h4>Treats</h4>
-@if (Model["treats"].Length == 0)
+@if (ViewBag.Treats.Count == 0)
 {
-<p>No treats have been added yet!</p>
+    <p>No treats have been added yet!</p>
+    <p>@Html.ActionLink("Add a new treat", "Create", "Treats")</p>
 }
 <ul>
-@foreach (Treat treat in Model["treats"])
-{
-<li>@Html.ActionLink(@treat.Name, "Details", "Treats", new { id = @treat.TreatId})</li>
-}
+    @foreach (Treat treat in ViewBag.Treats)
+    {
+        <li>@Html.ActionLink(@treat.Name, "Details", "Treats", new { id = @treat.TreatId})</li>
+    }
 </ul>
 
-<h4>Flavors</h4>
+@* <h4>Flavors</h4>
 @if (Model["flavors"].Length == 0)
 {
 <p>No flavors have been added yet!</p>
