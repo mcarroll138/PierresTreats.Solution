@@ -34,9 +34,9 @@ else
 
 @Html.ActionLink("Edit Flavor", "Edit", new { id = Model.FlavorId})
 <br>
-@* @Html.ActionLink("Add a Treat", "AddTreat", new { id = Model.TreatId }) to @Html.DisplayFor(m => m.Name)'s list of
-Treats.
-<br> *@
+@Html.ActionLink("Tag a treat to this flavor", "AddTreat", new { id = Model.FlavorId }) to @Html.DisplayFor(m =>
+m.Description)
+<br>
 @Html.ActionLink("Add Flavor", "Create", "Flavors")
 <br>
 @Html.ActionLink("Add Flavor to your list", "Create")

@@ -12,6 +12,7 @@ using System.Security.Claims;
 
 namespace PierresTreats.Controllers
 {
+    [Authorize]
     public class TreatsController : Controller
     {
         private readonly PierresTreatsContext _db;
@@ -21,11 +22,12 @@ namespace PierresTreats.Controllers
             _db = db;
         }
 
-
+        [AllowAnonymous]
         public ActionResult Index()
         {
             return View(_db.Treats.ToList());
         }
+        [AllowAnonymous]
         public ActionResult Details(int id)
         {
             Treat thisTreat = _db.Treats
@@ -101,13 +103,13 @@ namespace PierresTreats.Controllers
             _db.SaveChanges();
             return RedirectToAction("Index");
         }
-        // [HttpPost]
-        // public ActionResult DeleteJoin(int joinId)
-        // {
-        //     FlavorTreat joinEntry = _db.FlavorTreats.FirstOrDefault(entry => entry.FlavorTreatsId == joinId);
-        //     _db.FlavorTreats.Remove(joinEntry);
-        //     _db.SaveChanges();
-        //     return RedirectToAction("Index");
-        // }
+        [HttpPost]
+        public ActionResult DeleteJoin(int joinId)
+        {
+            FlavorTreat joinEntry = _db.FlavorTreats.FirstOrDefault(entry => entry.FlavorTreatId == joinId);
+            _db.FlavorTreats.Remove(joinEntry);
+            _db.SaveChanges();
+            return RedirectToAction("Index");
+        }
     }
 }

@@ -6,6 +6,17 @@
 
 <h1>Welcome to Pierre's Treats</h1>
 <hr>
+@if (User.Identity.IsAuthenticated)
+{
+    <p>You are currently logged in as @User.Identity.Name!</p>
+    <p>@Html.ActionLink("Add a new treat", "Create", "Treats")</p>
+    <p>@Html.ActionLink("Add a new flavor", "Create", "Flavors")</p>
+}
+else
+{
+    <p>You are not currently logged in, please </p>
+    <p>@Html.ActionLink("Click here to log in or create an account", "Index", "Account")</p>
+}
 
 <h4>Treats</h4>
 @if (ViewBag.Treats.Count == 0)
@@ -31,7 +42,3 @@
         <li>@Html.ActionLink(@flavor.Description, "Details", "Flavors", new { id = @flavor.FlavorId})</li>
     }
 </ul>
-
-<p>@Html.ActionLink("Create or manage an account", "Index", "Account")</p>
-<p>@Html.ActionLink("Add a new treat", "Create", "Treats")</p>
-<p>@Html.ActionLink("Add a new flavor", "Create", "Flavors")</p>
