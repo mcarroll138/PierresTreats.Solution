@@ -34,6 +34,7 @@ namespace PierresTreats.Controllers
                                         .FirstOrDefault(treat => treat.TreatId == id);
             return View(thisTreat);
         }
+
         public ActionResult Create()
         {
             return View();
@@ -53,25 +54,25 @@ namespace PierresTreats.Controllers
             }
         }
 
-//         public ActionResult AddFlavor(int id)
-//         {
-//             Treat thisTreat = _db.Treats.FirstOrDefault(treat => treat.TreatId == id);
-//             ViewBag.FlavorId = new SelectList(_db.Flavors, "FlavorId", "Name");
-//             return View(thisTreat);
-//         }
-//         [HttpPost]
-//         public ActionResult AddFlavor(Treat treat, int flavorId)
-//         {
-// #nullable enable
-//             FlavorTreat? joinEntity = _db.FlavorTreat.FirstOrDefault(join => (join.FlavorId == flavorId && join.TreatId == treat.TreatId));
-// #nullable disable
-//             if (joinEntity == null && flavorId != 0)//check here? is not or is?
-//             {
-//                 _db.FlavorTreats.Add(new FlavorTreat() { FlavorId = flavorId, TreatId = treat.TreatId });
-//                 _db.SaveChanges();
-//             }
-//             return RedirectToAction("Details", new { id = treat.TreatId });
-//         }
+        public ActionResult AddFlavor(int id)
+        {
+            Treat thisTreat = _db.Treats.FirstOrDefault(treat => treat.TreatId == id);
+            ViewBag.FlavorId = new SelectList(_db.Flavors, "FlavorId", "Description");
+            return View(thisTreat);
+        }
+        [HttpPost]
+        public ActionResult AddFlavor(Treat treat, int flavorId)
+        {
+#nullable enable
+            FlavorTreat? joinEntity = _db.FlavorTreats.FirstOrDefault(join => (join.FlavorId == flavorId && join.TreatId == treat.TreatId));
+#nullable disable
+            if (joinEntity == null && flavorId != 0)//check here? is not or is?
+            {
+                _db.FlavorTreats.Add(new FlavorTreat() { FlavorId = flavorId, TreatId = treat.TreatId });
+                _db.SaveChanges();
+            }
+            return RedirectToAction("Details", new { id = treat.TreatId });
+        }
 
         public ActionResult Edit(int id)
         {
