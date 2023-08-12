@@ -10,7 +10,9 @@
 <hr />
 <h3>@Html.DisplayNameFor(m => m.Name) : @Html.DisplayFor(m => m.Name)</h3>
 <h3>@Html.DisplayNameFor(m => m.Description) : @Html.DisplayFor(m => m.Description)</h3>
-
+<h3>@Html.ActionLink("Edit Treat", "Edit", new { id = Model.TreatId})</h3>
+<h3>@Html.ActionLink("Create a new treat", "Create")</h3>
+<hr>
 @if (@Model.JoinEntities.Count == 0)
 {
     <p>This Treat has no associated flavor.</p>
@@ -22,7 +24,10 @@ else
 
     @foreach (FlavorTreat join in Model.JoinEntities)
         {
-            <li>Flavor: @join.Flavor.Description</li>
+            <li>Flavor:
+                <br>
+                @join.Flavor.Description
+            </li>
             @using (Html.BeginForm("DeleteJoin", "Treats"))
             {
                 @Html.Hidden("joinId", @join.FlavorTreatId)
@@ -33,13 +38,8 @@ else
 }
 </ul>
 
-@Html.ActionLink("Edit Treat", "Edit", new { id = Model.TreatId})
 <br>
-@Html.ActionLink("Tag a flavor to this treat", "AddFlavor", new { id = Model.TreatId }) to @Html.DisplayFor(m =>
+@Html.ActionLink("Tag a flavor", "AddFlavor", new { id = Model.TreatId }) to @Html.DisplayFor(m =>
 m.Name)
-<br>
-@Html.ActionLink("Add Flavor", "Create", "Flavors")
-<br>
-@Html.ActionLink("Add Treat to your list", "Create")
 <br>
 @Html.ActionLink("Delete Treat", "Delete", new { id = Model.TreatId})
